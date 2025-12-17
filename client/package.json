@@ -1,0 +1,35 @@
+{
+  "name": "examples-minimal-react-client",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint --cache src",
+    "start": "vite preview",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.80.3",
+    "@trpc/client": "npm:@trpc/client",
+    "@trpc/server": "npm:@trpc/server",
+    "@trpc/tanstack-react-query": "npm:@trpc/tanstack-react-query",
+    "react": "^19.1.0",
+    "react-aria-components": "^1.14.0",
+    "react-dom": "^19.1.0",
+    "react-router": "^7.11.0",
+    "recharts": "^3.6.0"
+  },
+  "devDependencies": {
+    "@storybook/react-vite": "^10.1.10",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.26.0",
+    "storybook": "^10.1.10",
+    "typescript": "^5.9.2",
+    "vite": "^6.1.1",
+    "vite-plugin-svgr": "^4.5.0"
+  },
+  "version": "11.8.0"
+}

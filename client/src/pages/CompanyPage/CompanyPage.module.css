@@ -1,0 +1,18 @@
+.links {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding-inline: var(--spacing-sm);
+  padding-block: var(--spacing-xl);
+}
+
+.links a {
+  color: var(--colors-text-primary);
+}
+
+.links a:not(.active) {
+  text-decoration: underline var(--colors-text-primary) dashed;
+}
+
+.links a.active {
+  text-decoration: none;
+}

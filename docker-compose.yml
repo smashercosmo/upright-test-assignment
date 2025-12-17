@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:15
+    container_name: upright_assignment_db
+    restart: always
+    environment:
+      - POSTGRES_USER=upright_user
+      - POSTGRES_PASSWORD=upright_password
+      - POSTGRES_DB=upright_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

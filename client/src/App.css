@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--colors-bg-primary);
+  color: var(--colors-text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+@layer tokens {
+  :where(:root, :host) {
+    --dark-grey-shift: 1.2;
+
+    --colors-grey-50: light-dark(
+      oklch(0.9794 0.0013 286.38),
+      oklch(calc(var(--dark-grey-shift) - 0.9794) 0.0013 286.38)
+    ); /* #f8f8f9 */
+    --colors-grey-100: light-dark(
+      oklch(0.9697 0.0017 247.84),
+      oklch(calc(var(--dark-grey-shift) - 0.9697) 0.0017 247.84)
+    ); /* #f4f5f6 */
+    --colors-grey-200: light-dark(
+      oklch(0.9486 0.0017 247.84),
+      oklch(calc(var(--dark-grey-shift) - 0.9486) 0.0017 247.84)
+    ); /* #edeeef */
+    --colors-grey-300: light-dark(
+      oklch(0.8996 0.0105 261.79),
+      oklch(calc(var(--dark-grey-shift) - 0.8996) 0.0105 261.79)
+    ); /* #dadee5 */
+    --colors-grey-400: light-dark(
+      oklch(0.8286 0.0107 261.79),
+      oklch(calc(var(--dark-grey-shift) - 0.8286) 0.0107 261.79)
+    ); /* #c3c7ce */
+    --colors-grey-500: light-dark(
+      oklch(0.6446 0.0183 259.42),
+      oklch(calc(var(--dark-grey-shift) - 0.6446) 0.0183 259.42)
+    ); /* #878e99 */
+    --colors-grey-600: light-dark(
+      oklch(0.5606 0.0204 261.3),
+      oklch(calc(var(--dark-grey-shift) - 0.5606) 0.0204 261.3)
+    ); /* #6e7581 */
+    --colors-grey-700: light-dark(
+      oklch(0.4519 0.016 262.32),
+      oklch(calc(var(--dark-grey-shift) - 0.4519) 0.016 262.32)
+    ); /* #51565f */
+    --colors-grey-800: light-dark(
+      oklch(0.3847 0.0136 256.76),
+      oklch(calc(var(--dark-grey-shift) - 0.3847) 0.0136 256.76)
+    ); /* #3f444b */
+    --colors-grey-900: light-dark(
+      oklch(0.3241 0.0098 260.71),
+      oklch(calc(var(--dark-grey-shift) - 0.3241) 0.0098 260.71)
+    ); /* #313439 */
+    --colors-grey-1000: light-dark(
+      oklch(0.15 0.01 240),
+      oklch(calc(var(--dark-grey-shift) - 0.2 - 0.15) 0.01 240)
+    ); /* ≈ #0c121a */
+
+    --colors-bg-primary: light-dark(
+      var(--colors-white),
+      oklch(14% 0 0)
+    ); /* #fcfcfc */
+    --colors-divider: var(--colors-grey-200);
+    --colors-text-primary: var(--colors-grey-1000);
+    --colors-focus-ring: var(--colors-grey-1000);
+
+    --spacing-2xs: 0.125rem; /* 2px */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem; /* 8px */
+    --spacing-md: 0.75rem; /* 12px */
+    --spacing-lg: 1rem; /* 16px */
+    --spacing-xl: 1.25rem; /* 20px */
+    --spacing-2xl: 1.5rem; /* 24px */
+    --spacing-3xl: 2rem; /* 32px */
+    --spacing-4xl: 2.5rem; /* 40px */
+    --spacing-5xl: 3.75rem /* 60px */;
+    --spacing-6xl: 5rem; /* 80px */
+  }
+}

@@ -1,0 +1,130 @@
+.root {
+  display: grid;
+}
+
+.table {
+  inline-size: 100%;
+  border-spacing: 0;
+  outline: none;
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--colors-focus-ring);
+    outline-offset: -1px;
+  }
+}
+
+.tr {
+  outline: none;
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--colors-focus-ring);
+    outline-offset: -2px;
+  }
+}
+
+.tr[data-href] {
+  cursor: pointer;
+}
+
+.tr:not(:last-child) > .td {
+  border-block-end: 1px solid var(--colors-grey-200);
+}
+
+.th {
+  padding-inline: var(--spacing-sm);
+  padding-block: var(--spacing-sm);
+}
+
+.th > div {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  color: var(--colors-grey-600);
+  font-size: 0.875rem;
+}
+
+.thead {
+  border-radius: 0.125rem;
+  background-color: var(--colors-grey-100);
+}
+
+.th[data-allows-sorting="true"] {
+  cursor: pointer;
+}
+
+.td {
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-sm);
+}
+
+.th,
+.td {
+  white-space: nowrap;
+  outline: none;
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--colors-focus-ring);
+    outline-offset: -2px;
+  }
+}
+
+.td:first-child,
+.th:first-child {
+  --bg-if-can-scroll: var(--can-scroll)
+    linear-gradient(var(--colors-grey-200), var(--colors-grey-200));
+  --bg-if-cant-scroll: none;
+
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 1;
+
+  background-size: 1px, auto;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.th:first-child {
+  background-image:
+    var(--bg-if-can-scroll, var(--bg-if-cant-scroll)),
+    linear-gradient(var(--colors-grey-100), var(--colors-grey-100));
+}
+
+.td:first-child {
+  background-image:
+    var(--bg-if-can-scroll, var(--bg-if-cant-scroll)),
+    linear-gradient(var(--colors-bg-primary), var(--colors-bg-primary));
+}
+
+.left {
+  text-align: start;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: end;
+}
+
+/** https://www.bram.us/2023/09/16/solved-by-css-scroll-driven-animations-detect-if-an-element-can-scroll-or-not/ */
+@keyframes detect-scroll {
+  from,
+  to {
+    --can-scroll: ; /* space = true */
+  }
+}
+
+.scroller {
+  overflow: auto;
+  display: flex;
+  animation: detect-scroll linear;
+  animation-timeline: scroll(self inline);
+}
+
+.sort-indicator {
+  svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+  }
+}

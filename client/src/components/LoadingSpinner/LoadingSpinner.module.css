@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-sm);
+}
+
+.root {
+  display: block;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: transparent;
+  mask:
+    linear-gradient(#000, #000) padding-box,
+    linear-gradient(#000, #000);
+  mask-composite: exclude;
+  animation: rotate 0.75s linear infinite reverse;
+  border-width: 2px;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  background: conic-gradient(
+      from 180deg at 50% 50%,
+      var(--colors-grey-500) 0deg,
+      rgba(255, 255, 255, 0.29) 360deg
+    )
+    border-box;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
