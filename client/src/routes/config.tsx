@@ -4,6 +4,7 @@ import { paths } from "./paths";
 import { companyPageLoader } from "../pages/CompanyPage/CompanyPage.loader";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { companiesPageLoader } from "../pages/CompaniesPage/CompaniesPage.loader";
+import { rootLayoutLoader } from "../pages/RootLayout/RootLayout.loader";
 
 const RootLayout = lazy(() =>
   import("../pages/RootLayout/RootLayout").then((mod) => ({
@@ -26,6 +27,7 @@ const CompanyPage = lazy(() =>
 export const config = {
   path: paths.index,
   element: <RootLayout />,
+  loader: rootLayoutLoader,
   children: [
     {
       index: true,
