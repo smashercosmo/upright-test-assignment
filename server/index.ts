@@ -2,7 +2,7 @@
  * This is the API-handler of your app that contains all your API routes.
  * On a bigger app, you will probably want to split this file up into multiple files.
  */
-import { initTRPC } from "@trpc/server";
+import { initTRPC, TRPCError } from "@trpc/server";
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
 import { z } from "zod";
@@ -21,6 +21,30 @@ const publicProcedure = t.procedure;
 const router = t.router;
 
 const appRouter = router({
+  getCompany: t.procedure
+    .input(
+      z.object({
+        companyId: z.number(),
+      })
+    )
+    .output(
+      z.object({
+        id: z.number(),
+        name: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const result = await ctx.db.query("SELECT * FROM company WHERE id = $1", [
+        input.companyId,
+      ]);
+      if (!result.rows.length) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Company could not be found.",
+        });
+      }
+      return result.rows[0];
+    }),
   getSDGConfidence: t.procedure
     .output(
       z.array(
